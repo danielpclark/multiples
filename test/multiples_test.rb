@@ -55,4 +55,9 @@ class MultiplesTest < Minitest::Test
     assert_equal [3,5,6,9,10,12], x.lazy.first(6)
     refute_equal [3,5,6,9,10,12], x.lazy.first(6)
   end
+
+  def test_for_no_zeros
+    x = Multiples.new(6,14).palindrome
+    refute x.detect(&:zero?)
+  end
 end

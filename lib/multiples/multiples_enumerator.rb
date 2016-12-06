@@ -6,7 +6,7 @@ module Multiples
         @palindrome_length = a + b - 1
         @stack = [[@a.peek, @b.peek].min.to_i]
         send :build_palindrome
-        return MultiplesEnumerator.new(@stack)
+        return MultiplesEnumerator.new(@stack.reject(&:zero?))
       end
 
       private
