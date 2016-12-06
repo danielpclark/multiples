@@ -1,7 +1,7 @@
 require 'benchmark/ips'
 require 'multiples'
 
-premade = Multiples.new(3,5).lazy.select {|v| v % 7}.take(14).to_a
+premade = Multiples.new(3,5)
 
 Benchmark.ips do |x|
   x.report("Traditional") do
