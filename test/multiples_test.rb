@@ -11,8 +11,8 @@ class MultiplesTest < Minitest::Test
  
   def test_theory_of_any_two_numbers
     begin
-      a = rand(20)
-      b = rand(20)
+      a = rand(20)+1
+      b = rand(20)+1
     end until a != b
     x = Multiples.new(a,b).palindrome
     assert_equal x, x.reverse
@@ -59,5 +59,24 @@ class MultiplesTest < Minitest::Test
   def test_for_no_zeros
     x = Multiples.new(6,14).palindrome
     refute x.detect(&:zero?)
+
+    begin
+      a = rand(20)+1
+      b = rand(20)+1
+    end until a != b
+    x = Multiples.new(a,b).palindrome
+    refute x.detect(&:zero?)
+  end
+
+  def test_evens
+    x = Multiples.new(6,8).lazy
+    assert_equal [
+      6, 8, 12, 16, 18, 24,
+      30, 32, 36, 40, 42, 48,
+      54, 56, 60, 64, 66, 72,
+      78, 80, 84, 88, 90, 96,
+      102, 104, 108, 112, 114,
+      120
+    ], x.first(30)
   end
 end

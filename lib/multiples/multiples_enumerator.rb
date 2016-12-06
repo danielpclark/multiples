@@ -6,13 +6,18 @@ module Multiples
         @palindrome_length = a + b - 1
         @stack = [[@a.peek, @b.peek].min.to_i]
         send :build_palindrome
-        return MultiplesEnumerator.new(@stack.reject(&:zero?))
+        return MultiplesEnumerator.new(@stack)
       end
 
       private
       def build_palindrome
         until @stack.length == @palindrome_length
-          @stack << step
+          value = step
+
+          # Palindrome completed! Even numbers used!
+          break if value.zero? 
+
+          @stack << value
         end
       end
 
