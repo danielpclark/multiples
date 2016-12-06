@@ -47,4 +47,12 @@ class MultiplesTest < Minitest::Test
     end
     assert_equal 24, x.next
   end
+
+  def test_reset
+    x = Multiples.new(3,5)
+    assert_equal [3,5,6,9,10,12], x.lazy.first(6)
+    x.reset!
+    assert_equal [3,5,6,9,10,12], x.lazy.first(6)
+    refute_equal [3,5,6,9,10,12], x.lazy.first(6)
+  end
 end

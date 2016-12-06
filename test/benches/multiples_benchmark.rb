@@ -11,6 +11,7 @@ Benchmark.ips do |x|
 
   x.report("Multiples") do
     premade.lazy.select {|v| v % 7}.take(14).to_a
+    premade.reset!
   end
 
   x.report("new()-and-Multiples") do
@@ -23,6 +24,7 @@ Benchmark.ips do |x|
 
   x.report("Multiples2") do
     premade2.lazy.select {|v| v % 13}.take(14).to_a
+    premade2.reset!
   end
 
   x.report("new()-and-Multiples2") do

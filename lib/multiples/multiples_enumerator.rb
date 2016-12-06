@@ -40,6 +40,11 @@ module Multiples
       @base
     end
 
+    def reset!
+      @base = 0
+      @phase = 0
+    end
+
     def each
       loop do
         send :next
