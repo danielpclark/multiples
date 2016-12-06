@@ -76,6 +76,18 @@ x.prev
 # => 30
 x.phase
 # => 0
+
+y = Multiples.new(3,5)
+
+y.lazy.take(4).to_a
+# => [3, 5, 6, 9] 
+y.next
+# => 10 
+y.prev
+# => 9 
+
+y.lazy.select {|v| v % 7 == 0 }.take(14).to_a
+# => [21, 35, 42, 63, 70, 84, 105, 126, 140, 147, 168, 175, 189, 210]
 ```
 
 ## Development
