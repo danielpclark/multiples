@@ -90,6 +90,14 @@ y.lazy.select {|v| v % 7 == 0 }.take(14).to_a
 # => [21, 35, 42, 63, 70, 84, 105, 126, 140, 147, 168, 175, 189, 210]
 ```
 
+## Benchmark
+
+If you reuse the Enumerator (rather than re-initialzing it) you will gain a
+performance advantage of about 300%.  If you create a new Enumerator each time
+you use it your performance will be 30% worse than if you had not used this gem.
+See the benchmark file in test/benches for an example and run `rake bench` to see
+the results for yourself.
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
